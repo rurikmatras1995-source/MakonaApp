@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище МАКОНАModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="customers">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="patronymic" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="registration_date" Type="date" />
+    <Property Name="is_active" Type="bit" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="patronymic" Type="varchar" MaxLength="50" />
+    <Property Name="position" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="hire_date" Type="date" />
+    <Property Name="salary" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="is_active" Type="bit" />
+  </EntityType>
+  <EntityType Name="materials">
+    <Key>
+      <PropertyRef Name="material_id" />
+    </Key>
+    <Property Name="material_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="material_name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="profile_type" Type="varchar" MaxLength="50" />
+    <Property Name="grade" Type="varchar" MaxLength="30" />
+    <Property Name="unit" Type="varchar" MaxLength="20" />
+    <Property Name="unit_price" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order_materials">
+    <Key>
+      <PropertyRef Name="order_material_id" />
+    </Key>
+    <Property Name="order_material_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="material_id" Type="int" Nullable="false" />
+    <Property Name="quantity_kg" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="total_price" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customer_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="manager_id" Type="int" Nullable="false" />
+    <Property Name="order_date" Type="date" />
+    <Property Name="required_date" Type="date" Nullable="false" />
+    <Property Name="production_start_date" Type="date" />
+    <Property Name="production_end_date" Type="date" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="weight_kg" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="price_per_ton" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="weight_total" Type="decimal" Precision="21" Scale="2" StoreGeneratedPattern="Computed" />
+    <Property Name="total_cost" Type="decimal" Precision="38" Scale="8" StoreGeneratedPattern="Computed" />
+    <Property Name="status" Type="varchar" MaxLength="30" />
+    <Property Name="comment" Type="text" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="product_types">
+    <Key>
+      <PropertyRef Name="type_id" />
+    </Key>
+    <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="description" Type="text" />
+  </EntityType>
+  <EntityType Name="production_stages">
+    <Key>
+      <PropertyRef Name="stage_id" />
+    </Key>
+    <Property Name="stage_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="stage_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="planned_start_date" Type="date" Nullable="false" />
+    <Property Name="planned_end_date" Type="date" Nullable="false" />
+    <Property Name="actual_start_date" Type="date" />
+    <Property Name="actual_end_date" Type="date" />
+    <Property Name="assigned_employee_id" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="30" />
+    <Property Name="notes" Type="text" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="product_name" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="type_id" Type="int" Nullable="false" />
+    <Property Name="length_m" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+    <Property Name="width_m" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="height_m" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="weight_kg" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="price_per_ton" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="standard_days" Type="int" Nullable="false" />
+    <Property Name="is_active" Type="bit" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__order_mat__mater__5629CD9C">
+    <End Role="materials" Type="Self.materials" Multiplicity="1" />
+    <End Role="order_materials" Type="Self.order_materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materials">
+        <PropertyRef Name="material_id" />
+      </Principal>
+      <Dependent Role="order_materials">
+        <PropertyRef Name="material_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_mat__order__5535A963">
+    <End Role="orders" Type="Self.orders" Multiplicity="1" />
+    <End Role="order_materials" Type="Self.order_materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="order_materials">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__customer__44FF419A">
+    <End Role="customers" Type="Self.customers" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__manager___46E78A0C">
+    <End Role="employees" Type="Self.employees" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="manager_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__product___45F365D3">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productio__assig__4E88ABD4">
+    <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+    <End Role="production_stages" Type="Self.production_stages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="production_stages">
+        <PropertyRef Name="assigned_employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__productio__order__4D94879B">
+    <End Role="orders" Type="Self.orders" Multiplicity="1" />
+    <End Role="production_stages" Type="Self.production_stages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="order_id" />
+      </Principal>
+      <Dependent Role="production_stages">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__products__type_i__3D5E1FD2">
+    <End Role="product_types" Type="Self.product_types" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product_types">
+        <PropertyRef Name="type_id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище МАКОНАModelContainer">
+    <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="materials" EntityType="Self.materials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_materials" EntityType="Self.order_materials" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_types" EntityType="Self.product_types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="production_stages" EntityType="Self.production_stages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__order_mat__mater__5629CD9C" Association="Self.FK__order_mat__mater__5629CD9C">
+      <End Role="materials" EntitySet="materials" />
+      <End Role="order_materials" EntitySet="order_materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_mat__order__5535A963" Association="Self.FK__order_mat__order__5535A963">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_materials" EntitySet="order_materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__customer__44FF419A" Association="Self.FK__orders__customer__44FF419A">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__manager___46E78A0C" Association="Self.FK__orders__manager___46E78A0C">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__product___45F365D3" Association="Self.FK__orders__product___45F365D3">
+      <End Role="products" EntitySet="products" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productio__assig__4E88ABD4" Association="Self.FK__productio__assig__4E88ABD4">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="production_stages" EntitySet="production_stages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__productio__order__4D94879B" Association="Self.FK__productio__order__4D94879B">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="production_stages" EntitySet="production_stages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__products__type_i__3D5E1FD2" Association="Self.FK__products__type_i__3D5E1FD2">
+      <End Role="product_types" EntitySet="product_types" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
