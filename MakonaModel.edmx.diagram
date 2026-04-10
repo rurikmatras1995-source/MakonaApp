@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="78a0d8db8faf482d86801fa42172456b" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="МАКОНАModel.customers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="МАКОНАModel.employees" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="МАКОНАModel.materials" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="МАКОНАModel.order_materials" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="МАКОНАModel.orders" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="МАКОНАModel.product_types" Width="1.5" PointX="1.5" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="МАКОНАModel.production_stages" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="МАКОНАModel.products" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="МАКОНАModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="9.625" IsExpanded="true" />
+        <AssociationConnector Association="МАКОНАModel.FK__orders__customer__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="МАКОНАModel.FK__orders__manager___46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="МАКОНАModel.FK__productio__assig__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="МАКОНАModel.FK__order_mat__mater__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="МАКОНАModel.FK__order_mat__order__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="МАКОНАModel.FK__orders__product___45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="МАКОНАModel.FK__productio__order__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="МАКОНАModel.FK__products__type_i__3D5E1FD2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
